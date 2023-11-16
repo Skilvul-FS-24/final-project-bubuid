@@ -53,7 +53,7 @@ function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="hero min-h-max bg-[#18978F] text-white p-4 md:text-center md:text-left">
+      <div className="hero min-h-max bg-[#18978F] text-white p-4 md:text-left">
         <div className="hero-content flex-col justify-around lg:flex-row-reverse">
           <img
             src="/src/assets/animasi.png"
