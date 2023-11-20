@@ -16,7 +16,7 @@ function Navbar() {
       <div className="p-4 flex bg-[#54BAB9] justify-between lg:justify-around text-white items-center font-poppins">
         <div>
           <img
-            src="https://i.postimg.cc/85KGjjfY/Black-White-Minimalist-SImple-Monogram-Typography-Logo-1.png"
+            src="/src/assets/navbar.png"
             alt="bubu.id"
             width={150}
           />

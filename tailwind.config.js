@@ -5,6 +5,7 @@ export default {
   theme: {
     fontFamily: {
       poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+      rufina: ['Rufina', defaultTheme.fontFamily.sans]
     },
     extend: {},
   },
