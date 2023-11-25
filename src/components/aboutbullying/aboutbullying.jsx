@@ -1,8 +1,11 @@
 import React from "react";
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
 
 function AboutBullying() {
   return (
     <>
+      <Navbar/>
       <div className="bg-[#54BAB9] p-4 text-white">
         <div className="font-rufina">
           <div className="grid justify-items-center gap-2 text-center">
@@ -146,6 +149,7 @@ function AboutBullying() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

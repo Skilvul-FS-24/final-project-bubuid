@@ -1,8 +1,11 @@
 import React from "react";
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
 
 function Bacaartikel() {
   return (
     <>
+    <Navbar/>
       <div
         className="hero"
         style={{ backgroundImage: "url(src/assets/bacaartikel.jpeg)" }}
@@ -59,6 +62,7 @@ function Bacaartikel() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

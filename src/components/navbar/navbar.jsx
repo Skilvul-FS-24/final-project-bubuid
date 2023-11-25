@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
 
 function Navbar() {
   const [isClick, setIsClick] = useState(false);
@@ -30,35 +31,35 @@ function Navbar() {
         >
           <ul className="lg:flex gap-5 p-2 tracking-wider">
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">HOME</a>
+              <Link to="/">HOME</Link>
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">ABOUT BULLYING</a>
+              <Link to="/aboutbullying">ABOUT BULLYING</Link>
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">KONSELING</a>
+              <Link to="/konseling">KONSELING</Link>
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">ARTIKEL</a>
+              <Link to="/artikel">ARTIKEL</Link>
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">FORUM</a>
+              <Link to="/forum">FORUM</Link>
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">ABOUT US</a>
+              <Link to="/aboutus">ABOUT US</Link>
             </li>
             <div className="inline-flex lg:flex gap-3 mt-2 text-black lg:ml-10 lg:mt-0 text-sm w-fit">
-              <button
+              <Link to="/login"><button
                 className={`${isLogin ? "hidden" : "bg-white px-2 rounded-lg"}`}
                 // onClick={handleLogin}
               >
                 Login
-              </button>
-              <button
+              </button></Link>
+              <Link to="/register"><button
                 className={`${isLogin ? "hidden" : "bg-white px-2 rounded-lg"}`}
               >
                 Daftar
-              </button>
+              </button></Link>
               <div
                 className={`${isLogin ? "flex gap-2 text-white" : "hidden"}`}
               >

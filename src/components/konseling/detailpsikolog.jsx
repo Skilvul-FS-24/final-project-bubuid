@@ -1,8 +1,11 @@
 import React from "react";
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
 
 function DetailPsikolog() {
   return (
     <>
+      <Navbar/>
       <div className="min-h-fit m-auto text-center bg-[#54BAB9] text-white">
         <div className="p-10">
           <h1 className="text-3xl font-rufina mb-5">Profil Psikolog</h1>
@@ -222,6 +225,7 @@ function DetailPsikolog() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
