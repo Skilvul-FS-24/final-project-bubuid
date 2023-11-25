@@ -1,8 +1,12 @@
 import React from "react";
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
   return (
     <>
+      <Navbar/>
       <div className="bg-[#54BAB9] min-h-screen py-16">
         <div className="hero-content flex-col justify-evenly md:flex-row-reverse">
           <div>
@@ -45,9 +49,9 @@ function LandingPage() {
                 pendidikan
               </p>
               <div className="text-center mt-2">
-                <button className="bg-white px-4 py-2 rounded-md">
+                <Link to="/"><button className="bg-white px-4 py-2 rounded-md">
                   Learn More
-                </button>
+                </button></Link>
               </div>
             </div>
           </div>
@@ -68,9 +72,9 @@ function LandingPage() {
               menjadi suatu kebiasaan dan melibatkan ketidakseimbangan kekuasaan
               sosial atau fisik.
             </p>
-            <button className="bg-white px-4 py-1 rounded-md text-black">
+            <Link to="/aboutbullying"><button className="bg-white px-4 py-1 rounded-md text-black">
               Learn More
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>
@@ -96,9 +100,9 @@ function LandingPage() {
                       kenyamananmu bercerita
                     </p>
                     <div className="card-actions justify-center">
-                      <button className="bg-white px-4 py-1 rounded-md text-black">
+                      <Link to="/konseling"><button className="bg-white px-4 py-1 rounded-md text-black">
                         Learn More
-                      </button>
+                      </button></Link>
                     </div>
                   </div>
                 </div>
@@ -116,9 +120,9 @@ function LandingPage() {
                       akibatnya
                     </p>
                     <div className="card-actions justify-center">
-                      <button className="bg-white px-4 py-1 rounded-md text-black">
+                      <Link to="/artikel"><button className="bg-white px-4 py-1 rounded-md text-black">
                         Learn More
-                      </button>
+                      </button></Link>
                     </div>
                   </div>
                 </div>
@@ -190,6 +194,7 @@ function LandingPage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

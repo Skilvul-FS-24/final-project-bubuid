@@ -1,8 +1,12 @@
 import React from "react";
+import Navbar from "../navbar/navbar";
+import Footer from "../footer/footer";
+import { Link } from "react-router-dom";
 
 function Konseling() {
   return (
     <>
+      <Navbar/>
       <div className="min-h-fit m-auto text-center bg-[#54BAB9] text-white">
         <div className="p-10">
           <h1 className="text-3xl font-rufina mb-5">Konseling</h1>
@@ -116,7 +120,7 @@ function Konseling() {
                 soluta quasi, voluptas aut tempora itaque eveniet?
               </p>
             </div>
-            <button className="bg-white w-full text-sm rounded-xl p-1">Pilih Konsoler</button>
+            <Link to="/konseling/:id"><button className="bg-white w-full text-sm rounded-xl p-1">Pilih Konsoler</button></Link>
           </div>
           <div className="grid p-4 gap-2 w-2/3 md:w-2/5 rounded-xl bg-[#9ed1cf] font-poppins justify-items-center text-[#224F34] ">
             <h1 className="text-lg md:text-xl">
@@ -168,6 +172,7 @@ function Konseling() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
