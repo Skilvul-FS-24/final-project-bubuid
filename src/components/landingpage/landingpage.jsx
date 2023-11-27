@@ -17,7 +17,7 @@ function LandingPage() {
             />
           </div>
           <div className="md:w-1/2 text-white">
-            <div className="w-64 text-center">
+            <div className="md:w-64 text-center">
               <h1 className="text-6xl font-rufina">Say No!! To Bullying</h1>
             </div>
             <p className="py-6 font-poppins antialiased tracking-wider">
@@ -83,7 +83,7 @@ function LandingPage() {
         style={{ backgroundImage: "url(/src/assets/bg-fitur.png)" }}
       >
         <div className="text-center">
-          <div className="">
+          <div>
             <h1 className="mb-5 text-xl font-bold font-poppins text-[#224F34]">
               Fitur Kami
             </h1>
@@ -107,7 +107,7 @@ function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div class="basis-1/4">
+              <div className="basis-1/4">
                 <div className="card shadow-xl bg-[#18978F]">
                   <div className="card-body ">
                     <h2 className="text-sm text-left">Artikel</h2>
