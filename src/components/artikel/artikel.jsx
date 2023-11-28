@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getArtikels } from "../../redux/actions/artikel.action";
 
 function Artikel() {
+  const dispatch = useDispatch();
+  const { isLoading, artikels } = useSelector((state) => state.artikel);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    dispatch(getArtikels(token));
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -17,68 +27,35 @@ function Artikel() {
       </div>
 
       <div className="md:p-20">
-        <div className="p-10 bg-slate-100 md:w-3/4 m-auto md:px-28 text-[#224F34] ">
+        <div className="p-10 bg-slate-100 md:w-3/5/4 m-auto md:px-28 text-[#224F34] ">
           <h1 className="text-start mb-10 text-3xl font-bold">
             Temukan Artikel
           </h1>
-          <div className="flex flex-col-reverse md:flex-row justify-between mb-16">
-            <div className="">
-              <h1 className="text-2xl font-bold">
-                Jadi Korban Bullying di Sekolah,Apa <br></br>Dampaknya pada
-                Anak?
-              </h1>
-              <p className="py-6">
-                Bullying bisa terjadi kepada siapa saja dan di mana saja,
-                <br></br>
-                tak terkecuali pada anak di sekolah. sekolah yang seharusnya
-                <br></br>
-                menjadi tempat belajar, nyatanya pada beberapa kasus, bisa{" "}
-                <br></br>
-                jadi ajang bullying ke sesama murid.
-              </p>
-              <Link to="/artikel/:id"><button className="btn btn-outline btn-xs sm:btn-sm md:btn-md ">
-                Baca Selengkapnya
-              </button></Link>
-            </div>
+          {isLoading ? (
+            <span className="loading loading-dots loading-sm"></span>
+          ) : (
+            artikels.map((artikel) => (
+              <div className="flex flex-col-reverse md:flex-row mb-16 items-center gap-10" key={artikel.id}>
+                <div className="">
+                  <h1 className="text-2xl font-bold">{artikel.judul}</h1>
+                  <p className="py-6">
+                    {artikel.highlight_isi}
+                  </p>
+                  <Link to={`/artikel/${artikel.id}`}>
+                    <button className="btn btn-outline btn-xs sm:btn-sm md:btn-md ">
+                      Baca Selengkapnya
+                    </button>
+                  </Link>
+                </div>
+                  <img
+                    src={artikel.gambar}
+                    width={300}
+                    className="rounded-3xl"
+                  />
+              </div>
+            ))
+          )}
 
-            <div>
-              <img
-                src="/src/assets/img-artikel-1.png"
-                width={350}
-                className="rounded-3xl"
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col-reverse md:flex-row justify-between mb-16 ">
-            <div className="">
-              <h1 className="text-2xl font-bold">
-                Jadi Korban Bullying di Sekolah,Apa <br></br>Dampaknya pada
-                Anak?
-              </h1>
-              <p className="py-6">
-                Bullying bisa terjadi kepada siapa saja dan di mana saja,
-                <br></br>
-                tak terkecuali pada anak di sekolah. sekolah yang seharusnya
-                <br></br>
-                menjadi tempat belajar, nyatanya pada beberapa kasus, bisa{" "}
-                <br></br>
-                jadi ajang bullying ke sesama murid.
-              </p>
-
-              <button className="btn btn-outline btn-xs sm:btn-sm md:btn-md ">
-                Baca Selengkapnya
-              </button>
-            </div>
-
-            <div>
-              <img
-                src="/src/assets/img-artikel-1.png"
-                width={350}
-                className="rounded-3xl"
-              />
-            </div>
-          </div>
           <div>
             <button className="btn btn-active btn-accent btn-xs sm:btn-sm md:btn-md ">
               Load More

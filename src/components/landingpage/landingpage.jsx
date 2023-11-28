@@ -87,8 +87,8 @@ function LandingPage() {
             <h1 className="mb-5 text-xl font-bold font-poppins text-[#224F34]">
               Fitur Kami
             </h1>
-            <div class="flex flex-col md:flex-row gap-2 font-poppins text-white justify-around">
-              <div class="basis-1/4">
+            <div className="flex flex-col md:flex-row gap-2 font-poppins text-white justify-around">
+              <div className="basis-1/4">
                 <div className="card shadow-xl bg-[#18978F]">
                   <div className="card-body">
                     <h2 className="text-sm text-left">Konseling</h2>
@@ -127,7 +127,7 @@ function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div class="basis-1/4">
+              <div className="basis-1/4">
                 <div className="card shadow-xl bg-[#18978F]">
                   <div className="card-body">
                     <h2 className="text-sm text-left">Forum</h2>

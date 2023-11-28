@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getPsikologs } from "../../redux/actions/psikolog.action";
+import { getUserIdKonseling } from "../../redux/actions/user.action";
 
 function Konseling() {
+  const dispatch = useDispatch();
+  const { isLoading, psikologs } = useSelector((state) => state.psikolog);
+  const { users } = useSelector((state) => state.user);
+  const token = localStorage.getItem("token");
+  const idUser = localStorage.getItem("id_user");
+
+  useEffect(() => {
+    dispatch(getPsikologs(token));
+  }, []);
+
+  useEffect(() => {
+    dispatch(getUserIdKonseling(token, idUser));
+  }, []);
+
+  const getPsikologName = (id_psikolog) => {
+    const psikolog = psikologs.find((psikolog) => psikolog.id === id_psikolog);
+    return psikolog ? psikolog.nama_psikolog : "Unknown Psikolog";
+  };
+
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="min-h-fit m-auto text-center bg-[#54BAB9] text-white">
         <div className="p-10">
           <h1 className="text-3xl font-rufina mb-5">Konseling</h1>
@@ -106,73 +128,85 @@ function Konseling() {
       <div>
         <h1></h1>
         <div className="grid grid-cols-1 md:grid-cols-2 p-4 gap-4 justify-items-center">
-          <div className="grid p-4 gap-2 w-2/3 md:w-2/5 rounded-xl bg-[#9ed1cf] font-poppins justify-items-center text-[#224F34] ">
-            <h1 className="text-lg md:text-xl">
-              Muhammad Bagas M
-            </h1>
-            <img src="/src/assets/physical.png" alt="" width={200} />
-            <div className="grid gap-2">
-              <h2 className="text-sm">Muhammad Bagas M</h2>
-              <p className="text-xs">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci, harum facere impedit quia dignissimos doloremque!
-                Earum aperiam unde, aliquid corrupti corporis quibusdam quo
-                soluta quasi, voluptas aut tempora itaque eveniet?
-              </p>
-            </div>
-            <Link to="/konseling/:id"><button className="bg-white w-full text-sm rounded-xl p-1">Pilih Konsoler</button></Link>
-          </div>
-          <div className="grid p-4 gap-2 w-2/3 md:w-2/5 rounded-xl bg-[#9ed1cf] font-poppins justify-items-center text-[#224F34] ">
-            <h1 className="text-lg md:text-xl">
-              Muhammad Bagas M
-            </h1>
-            <img src="/src/assets/physical.png" alt="" width={200} />
-            <div className="grid gap-2">
-              <h2 className="text-sm">Muhammad Bagas M</h2>
-              <p className="text-xs">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci, harum facere impedit quia dignissimos doloremque!
-                Earum aperiam unde, aliquid corrupti corporis quibusdam quo
-                soluta quasi, voluptas aut tempora itaque eveniet?
-              </p>
-            </div>
-            <button className="bg-white w-full text-sm rounded-xl p-1">Pilih Konsoler</button>
-          </div>
-          <div className="grid p-4 gap-2 w-2/3 md:w-2/5 rounded-xl bg-[#9ed1cf] font-poppins justify-items-center text-[#224F34] ">
-            <h1 className="text-lg md:text-xl">
-              Muhammad Bagas M
-            </h1>
-            <img src="/src/assets/physical.png" alt="" width={200} />
-            <div className="grid gap-2">
-              <h2 className="text-sm">Muhammad Bagas M</h2>
-              <p className="text-xs">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci, harum facere impedit quia dignissimos doloremque!
-                Earum aperiam unde, aliquid corrupti corporis quibusdam quo
-                soluta quasi, voluptas aut tempora itaque eveniet?
-              </p>
-            </div>
-            <button className="bg-white w-full text-sm rounded-xl p-1">Pilih Konsoler</button>
-          </div>
-          <div className="grid p-4 gap-2 w-2/3 md:w-2/5 rounded-xl bg-[#9ed1cf] font-poppins justify-items-center text-[#224F34] ">
-            <h1 className="text-lg md:text-xl">
-              Muhammad Bagas M
-            </h1>
-            <img src="/src/assets/physical.png" alt="" width={200} />
-            <div className="grid gap-2">
-              <h2 className="text-sm">Muhammad Bagas M</h2>
-              <p className="text-xs">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci, harum facere impedit quia dignissimos doloremque!
-                Earum aperiam unde, aliquid corrupti corporis quibusdam quo
-                soluta quasi, voluptas aut tempora itaque eveniet?
-              </p>
-            </div>
-            <button className="bg-white w-full text-sm rounded-xl p-1">Pilih Konsoler</button>
+          {isLoading ? (
+            <span className="loading loading-dots loading-sm"></span>
+          ) : (
+            psikologs.map((psikolog, index) => (
+              <div
+                className="grid p-4 gap-2 w-2/3 md:w-2/5 rounded-xl bg-[#9ed1cf] font-poppins justify-items-center text-[#224F34] "
+                key={psikolog.id}
+              >
+                <h1 className="text-lg md:text-xl">{psikolog.nama_psikolog}</h1>
+                <img src={psikolog.gambar} alt="" width={200} />
+                <div className="grid gap-2">
+                  <h2 className="text-sm">{psikolog.nama_psikolog}</h2>
+                  <p className="text-xs">{psikolog.highlight_biography}</p>
+                </div>
+                <Link to={`/konseling/${psikolog.id}`}>
+                  <button className="bg-white w-full text-sm rounded-xl p-1">
+                    Pilih Konsoler
+                  </button>
+                </Link>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+      <div>
+        <div className="p-4 font-poppins">
+          <h2 className="text-2xl text-[#224F34] text-center">
+            Konseling Saya
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center">
+            {users.length === 0 ? (
+              <p className="mt-8">Data Konseling tidak ditemukan</p>
+            ) : (
+              users.map((user, index) => (
+                <div
+                  className="card w-full md:w-96 bg-[#18978F] shadow-xl mt-5"
+                  key={user.id}
+                >
+                  <div className="card-body">
+                    <p className="text-white text-lg font-semibold">
+                      {user.nama}
+                    </p>
+                    <p className="text-white font-poppins text-sm">
+                      Jadwal : {user.jadwal}
+                    </p>
+                    <p className="text-white font-poppins text-sm">
+                      Asal Sekolah : {user.asal_sekolah}
+                    </p>
+                    <p className="text-white font-poppins text-sm">
+                      Psikolog : {getPsikologName(user.id_psikolog)}
+                    </p>
+                    {user.paket === "Online" ? (
+                      <p className="text-white font-poppins text-sm">
+                        Link Meet :{" "}
+                        <a
+                          href="https://meet.google.com/rxa-shht-kqb"
+                          target="_blank"
+                        >
+                          Join Meeting
+                        </a>
+                      </p>
+                    ) : (
+                      <p className="text-white font-poppins text-sm">
+                        Ruangan: 101
+                      </p>
+                    )}
+                    <div className="text-center mt-2">
+                        <button className="bg-white px-4 py-2 rounded-md font-poppins w-full">
+                          {user.status ? "Selesai Konseling" : "On Progress"}
+                        </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

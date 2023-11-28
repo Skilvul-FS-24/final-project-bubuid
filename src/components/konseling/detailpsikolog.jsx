@@ -1,11 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getPsikologById } from "../../redux/actions/psikolog.action";
+import { submitKonselingForm } from "../../redux/actions/konseling.action";
 
 function DetailPsikolog() {
+  const dispatch = useDispatch();
+  const { isLoading, psikologs } = useSelector((state) => state.psikolog);
+  const token = localStorage.getItem("token");
+  const idUser = localStorage.getItem("id_user");
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getPsikologById(token, id));
+  }, []);
+
+  const [formData, setFormData] = useState({
+    nama: "",
+    email: "",
+    no_hp: "",
+    asal_sekolah: "",
+    paket: "online",
+    jadwal: "",
+    keluhan: "",
+    status: false,
+    id_user: idUser,
+    id_psikolog: id,
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Dispatch action to send form data to Redux
+    dispatch(submitKonselingForm(token, id, formData));
+    window.location.href = "/konseling";
+  };
+
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="min-h-fit m-auto text-center bg-[#54BAB9] text-white">
         <div className="p-10">
           <h1 className="text-3xl font-rufina mb-5">Profil Psikolog</h1>
@@ -15,13 +56,13 @@ function DetailPsikolog() {
           </p>
         </div>
       </div>
-      <div class="flex flex-col md:flex-row justify-center p-10 gap-9">
-        <div class="md:basis-1/5 font-poppins md:grid  md:place-content-between">
-          <img src="/src/assets/physical.png" alt="" className="w-full" />
-          {/* <button className="w-full bg-[#54BAB9] rounded-xl text-sm p-1">
-            Konsultasi Sekarang
-          </button> */}
-          {/* You can open the modal using document.getElementById('ID').showModal() method */}
+      <div className="flex flex-col md:flex-row justify-center p-10 gap-9">
+        <div className="md:basis-1/5 font-poppins md:grid  md:place-content-between">
+          <img
+            src={psikologs.gambar}
+            alt=""
+            className="w-full mb-5 rounded-md"
+          />
           <button
             className="text-white bg-[#54BAB9] p-1 rounded-xl w-full hover:bg-[#9fe4e3]"
             onClick={() => document.getElementById("my_modal_3").showModal()}
@@ -46,9 +87,11 @@ function DetailPsikolog() {
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
+                    id="nama"
+                    name="nama"
                     className="border rounded w-full py-2 px-3"
+                    onChange={handleChange}
+                    value={formData.nama}
                   />
                 </div>
                 <div className="mb-4">
@@ -63,6 +106,8 @@ function DetailPsikolog() {
                     id="email"
                     name="email"
                     className="border rounded w-full py-2 px-3"
+                    onChange={handleChange}
+                    value={formData.email}
                   />
                 </div>
 
@@ -75,9 +120,11 @@ function DetailPsikolog() {
                   </label>
                   <input
                     type="tel"
-                    id="phoneNumber"
-                    name="phoneNumber"
+                    id="no_hp"
+                    name="no_hp"
                     className="border rounded w-full py-2 px-3"
+                    onChange={handleChange}
+                    value={formData.no_hp}
                   />
                 </div>
 
@@ -90,9 +137,11 @@ function DetailPsikolog() {
                   </label>
                   <input
                     type="text"
-                    id="school"
-                    name="school"
+                    id="asal_sekolah"
+                    name="asal_sekolah"
                     className="border rounded w-full py-2 px-3"
+                    onChange={handleChange}
+                    value={formData.asal_sekolah}
                   />
                 </div>
 
@@ -104,12 +153,14 @@ function DetailPsikolog() {
                     Pilihan Online/Offline
                   </label>
                   <select
-                    id="onlineOffline"
-                    name="onlineOffline"
+                    id="paket"
+                    name="paket"
                     className="border rounded md:w-full py-2 px-3"
+                    onChange={handleChange}
+                    value={formData.paket}
                   >
-                    <option value="online">Online</option>
-                    <option value="offline">Offline</option>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
                   </select>
                 </div>
 
@@ -122,10 +173,15 @@ function DetailPsikolog() {
                   </label>
                   <input
                     type="date"
-                    id="date"
-                    name="date"
+                    id="jadwal"
+                    name="jadwal"
                     className="border rounded w-full py-2 px-3"
+                    onChange={handleChange}
+                    value={formData.jadwal}
                   />
+                  <label className="label">
+                    <span className="label-text-alt">{psikologs.jadwal}</span>
+                  </label>
                 </div>
 
                 <div className="mb-4">
@@ -136,15 +192,18 @@ function DetailPsikolog() {
                     Keluhan Anda
                   </label>
                   <textarea
-                    id="complaint"
-                    name="complaint"
+                    id="keluhan"
+                    name="keluhan"
                     className="border rounded w-full py-2 px-3"
+                    onChange={handleChange}
+                    value={formData.keluhan}
                   />
                 </div>
 
                 <button
                   type="submit"
                   className="text-white bg-[#54BAB9] p-1 rounded-xl w-full hover:bg-[#9fe4e3]"
+                  onClick={handleSubmit}
                 >
                   Submit
                 </button>
@@ -152,32 +211,22 @@ function DetailPsikolog() {
             </div>
           </dialog>
         </div>
-        <div class="md:basis-1/2 p-10 bg-[#54BAB9] rounded-xl font-poppins">
-          <h1 className="text-xl font-bold">Muhamad Bagas M</h1>
+        <div className="md:basis-1/2 p-10 bg-[#54BAB9] rounded-xl font-poppins">
+          <h1 className="text-xl font-bold">{psikologs.nama_psikolog}</h1>
           <div className="mt-2">
             <h1 className="text-white font-semibold mb-2">Biography</h1>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              iure voluptas voluptate, sapiente cumque libero temporibus aperiam
-              ab eos ea facilis provident mollitia nam est laudantium modi,
-              dolore impedit culpa!
-            </p>
+            <p className="text-sm">{psikologs.biography}</p>
           </div>
           <div className="mt-2">
             <h1 className="text-white font-semibold mb-2">Pendidikan</h1>
             <ul className="list-disc text-sm">
-              <li>Pendidikan S1: Sarjana Psikologi Universitas Indonesia</li>
-              <li>
-                Pendidikan S2: Magister Psikologi Profesi Klinis Universitas
-                Jayabaya
-              </li>
+              <li>{psikologs.pendidikan}</li>
             </ul>
           </div>
           <div className="mt-2">
             <h1 className="text-white font-semibold mb-2">Jadwal Konseling</h1>
             <ul className="list-disc text-sm">
-              <li>Selasa 18.00 - 19.00</li>
-              <li>Rabu, 13.00 - 14.00</li>
+              <li>{psikologs.jadwal}</li>
             </ul>
           </div>
         </div>
@@ -225,7 +274,7 @@ function DetailPsikolog() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

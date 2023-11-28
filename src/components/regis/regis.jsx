@@ -56,11 +56,11 @@ function Regis() {
 
   return (
     <div className="hero min-h-screen bg-[#18978F]">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="card md:flex-row flex-col items-center w-full max-w-2xl shadow-2xl bg-base-100 px-20">
+      <div className="hero-content flex-col">
+        <div className="card flex-col items-center shadow-2xl bg-base-100 md:px-20 p-4">
           <form className="card-body">
-            <div className="mb-8">
-              <img src="/src/assets/regis.png" width={250} alt="" />
+            <div className="mb-8 w-60">
+              <img src="/src/assets/regis.png" alt="" />
             </div>
             <div className="form-control">
               <h1 className="text-center font-bold">CREATE ACCOUNT</h1>
