@@ -10,17 +10,12 @@ import Regis from "./components/regis/regis";
 
 import { Link, Navigate, Route, Routes } from "react-router-dom";
 
-const isAuthenticated = () => {
-  const token = localStorage.getItem("token");
-  return !!token;
-};
-
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="aboutbullying" element={<AboutBullying/>}/>
+        <Route path="aboutbullying" element={<AboutBullying />} />
         <Route path="konseling" element={<Konseling />} />
         <Route path="konseling/:id" element={<DetailPsikolog />} />
         <Route path="artikel" element={<Artikel />} />

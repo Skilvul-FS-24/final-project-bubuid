@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Login() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("id_user");
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -51,8 +53,8 @@ function Login() {
   };
   return (
     <div className="hero min-h-screen bg-[#18978F]">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="card md:flex-row flex-col items-center w-full max-w-2xl shadow-2xl bg-base-100 px-20">
+      <div className="hero-content">
+        <div className="card md:flex-row flex-col items-center shadow-2xl bg-base-100 md:px-20 p-6">
           <form className="card-body">
             <div className="form-control">
               <h1 className="text-center font-bold">LOGIN</h1>
@@ -83,9 +85,6 @@ function Login() {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
                 <Link to="/register" className="label-text-alt link link-hover">
                   Create Acoount
                 </Link>
@@ -120,8 +119,8 @@ function Login() {
               </button>
             </div>
           </form>
-          <div className="">
-            <img src="/src/assets/login.jpeg" width={350} alt="" />
+          <div className="w-60">
+            <img src="/src/assets/login.jpeg" alt="" />
           </div>
         </div>
       </div>

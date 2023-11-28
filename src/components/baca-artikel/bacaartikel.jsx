@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { getArtikelById } from "../../redux/actions/artikel.action";
 
 function Bacaartikel() {
+  const dispatch = useDispatch();
+  const { isLoading, artikels } = useSelector((state) => state.artikel);
+  const token = localStorage.getItem("token");
+
+  const { id } = useParams();
+
+    useEffect(() => {
+    dispatch(getArtikelById(token, id));
+  }, []);
+
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div
         className="hero"
         style={{ backgroundImage: "url(src/assets/bacaartikel.jpeg)" }}
@@ -18,34 +31,28 @@ function Bacaartikel() {
         </div>
       </div>
 
-      <div className="p-10 font-bold">
-        <div className="p-10 bg-slate-100">
-          <h1 style={{ textAlign: "center", fontSize: "24px" }}>
-            Sikap Orangtua Terhadap Bullying Anak: Melindungi atau Melawan?
+      <div className="md:p-10">
+        <div className="p-10 bg-slate-100 font-poppins">
+          <h1 className="font-bold text-center text-2xl">
+            {artikels.judul}
           </h1>
           <div className="grid grid-cols-1 justify-center items-center">
             <img
-              src="/src/assets/imgbaca.png"
+              src={artikels.gambar}
               width={300}
-              className="mx-auto mt-5 mb-5"
+              className="mx-auto mt-5 mb-5 rounded-md"
               alt=""
             />
-            <p>
-              Bullying adalah perilaku yang berulang dan merugikan yang
-              dilakukan oleh satu individu atau sekelompok individu terhadap
-              orang lain. Ini bisa terjadi dalam berbagai konteks, seperti di
-              sekolah, tempat kerja, lingkungan sosial, atau bahkan di dunia
-              maya. Perilaku bullying mencakup tindakan-tindakan yang memiliki
-              niat untuk menyakiti, merendahkan, atau mendiskreditkan targetnya
-              secara fisik, verbal, atau emosional.
+            <p className="indent-8 font-sm tracking-normal">
+              {artikels.isi}
             </p>
           </div>
-          <div className="justify-between">
+          <div className="justify-between p-2">
             <div className="flex gap-4 items-center left-content">
-              <img src="src/assets/fotoartikel.png" width={30} alt="" />
+              <img src={artikels.profil_penulis} width={30} alt="" />
               <div className="">
-                <p>Mustika Wardani</p>
-                <p>Guru</p>
+                <p>{artikels.penulis}</p>
+                <p>{artikels.pekerjaan}</p>
               </div>
               <div className="flex gap-4">
                 <a>
@@ -62,7 +69,7 @@ function Bacaartikel() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }
