@@ -9,19 +9,22 @@ import Login from "./components/login/login";
 import Regis from "./components/regis/regis";
 
 import { Link, Navigate, Route, Routes } from "react-router-dom";
+import PrivateRoute from "./components/routing/privateRoute";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="aboutbullying" element={<AboutBullying />} />
-        <Route path="konseling" element={<Konseling />} />
-        <Route path="konseling/:id" element={<DetailPsikolog />} />
-        <Route path="artikel" element={<Artikel />} />
-        <Route path="artikel/:id" element={<BacaArtikel />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Regis />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="aboutbullying" element={<AboutBullying />} />
+          <Route path="konseling" element={<Konseling />} />
+          <Route path="konseling/:id" element={<DetailPsikolog />} />
+          <Route path="artikel" element={<Artikel />} />
+          <Route path="artikel/:id" element={<BacaArtikel />} />
+        </Route>
       </Routes>
     </>
   );
