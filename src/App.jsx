@@ -10,6 +10,7 @@ import Regis from "./components/regis/regis";
 
 import { Link, Navigate, Route, Routes } from "react-router-dom";
 import PrivateRoute from "./components/routing/privateRoute";
+import AboutUs from "./components/aboutus/aboutus";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="konseling/:id" element={<DetailPsikolog />} />
           <Route path="artikel" element={<Artikel />} />
           <Route path="artikel/:id" element={<BacaArtikel />} />
+          <Route path="aboutus" element={<AboutUs/>}/>
         </Route>
       </Routes>
     </>
