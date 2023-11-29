@@ -83,7 +83,7 @@ function Navbar() {
               <Link to="/">FORUM</Link>
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <Link to="/">ABOUT US</Link>
+              <Link to="/aboutus">ABOUT US</Link>
             </li>
             <div className="inline-flex lg:flex gap-3 mt-2 text-black lg:ml-10 lg:mt-0 text-sm w-fit">
               <Link to="/login">
