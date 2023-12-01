@@ -1,6 +1,9 @@
 import React from "react";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
+import akbar from "../../assets/akbar.png"
+import bagas from "../../assets/bagas1.png"
+import ririn from "../../assets/ririn1.png"
 
 function AboutUs() {
   return (
@@ -39,7 +42,7 @@ function AboutUs() {
           <div className="flex flex-col items-center">
             <img
               className="rounded-full mb-2"
-              src="/src/assets/ririn1.png"
+              src={ririn}
               alt=""
               width={200}
             />
@@ -49,7 +52,7 @@ function AboutUs() {
           <div className="flex flex-col items-center">
             <img
               className="rounded-full mb-2"
-              src="/src/assets/akbar.png"
+              src={akbar}
               alt=""
               width={200}
             />
@@ -59,7 +62,7 @@ function AboutUs() {
           <div className="flex flex-col items-center">
             <img
               className="rounded-full mb-2"
-              src="/src/assets/bagas1.png"
+              src={bagas}
               alt=""
               width={200}
             />

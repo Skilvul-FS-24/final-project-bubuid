@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import logoRegis from "../../assets/regis.png"
 
 function Regis() {
   const [user, setUser] = useState({
@@ -60,7 +61,7 @@ function Regis() {
         <div className="card flex-col items-center shadow-2xl bg-base-100 md:px-20 p-4">
           <form className="card-body">
             <div className="mb-8 w-60">
-              <img src="/src/assets/regis.png" alt="" />
+              <img src={logoRegis}alt="" />
             </div>
             <div className="form-control">
               <h1 className="text-center font-bold">CREATE ACCOUNT</h1>

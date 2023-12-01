@@ -1,6 +1,16 @@
 import React from "react";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
+import aboutBullying from "../../assets/aboutbullying.png"
+import verbal from "../../assets/verbal.png"
+import physical from "../../assets/physical.png"
+import social from "../../assets/social.png"
+import cyber from "../../assets/cyber.png"
+import stress from "../../assets/stress.png"
+import hate from "../../assets/hate.png"
+import danger from "../../assets/danger.png"
+
+
 
 function AboutBullying() {
   return (
@@ -10,7 +20,7 @@ function AboutBullying() {
         <div className="font-rufina">
           <div className="grid justify-items-center gap-2 text-center">
             <h1 className="text-2xl font-bold">About Bullying</h1>
-            <img src="/src/assets/aboutbullying.png" alt="" width={200} />
+            <img src={aboutBullying} alt="" width={200} />
           </div>
           <div className="mt-8 font-poppins md:ml-10">
             <h2 className="text-xl font-semibold">Bullying</h2>
@@ -35,7 +45,7 @@ function AboutBullying() {
             <div className="p-4">
               <h1 className="font-semibold">Verbal Bullying</h1>
               <div className="flex flex-col md:flex-row gap-2 mt-2">
-                <img src="/src/assets/verbal.png" alt="" width={200} />
+                <img src={verbal} alt="" width={200} />
                 <p className="text-sm">
                   Mengolok-olok, mencaci-maki, mengejek, mengancam, memfitnah,
                   mencemarkan nama baik atau menggunakan kata-kata yang tidak
@@ -46,7 +56,7 @@ function AboutBullying() {
             <div className="p-4">
               <h1 className="font-semibold">Physical Bullying</h1>
               <div className="flex flex-col md:flex-row gap-2 mt-2">
-                <img src="/src/assets/physical.png" alt="" width={200} />
+                <img src={physical} alt="" width={200} />
                 <p className="text-sm">
                   Memukul, meninju, menendang, menampar, meludah, merusak barang
                   atau barang milik orang lain, atau bentuk kekerasan lainnya
@@ -57,7 +67,7 @@ function AboutBullying() {
             <div className="p-4">
               <h1 className="font-semibold">Social Bullying</h1>
               <div className="flex flex-col md:flex-row gap-2 mt-2">
-                <img src="/src/assets/social.png" alt="" width={200} />
+                <img src={social} alt="" width={200} />
                 <p className="text-sm">
                   Mengabaikan, mengecualikan, mencemooh, dan bentuk-bentuk
                   tindakan lain yang bertujuan untuk menjauhi seseorang dari
@@ -68,7 +78,7 @@ function AboutBullying() {
             <div className="p-4">
               <h1 className="font-semibold">Cyber Bullying</h1>
               <div className="flex flex-col md:flex-row gap-2 mt-2">
-                <img src="/src/assets/cyber.png" alt="" width={200} />
+                <img src={cyber} alt="" width={200} />
                 <p className="text-sm">
                   Mengejek atau mengintimidasi seseorang melalui sarana
                   elektronik seperti namun tidak terbatas pada pesan teks dan
@@ -134,17 +144,17 @@ function AboutBullying() {
         </div>
         <div className="p-5 flex flex-col md:flex-row gap-4 justify-around md:mt-10">
           <div className="grid justify-items-center md:w-60 text-center gap-4 bg-[#18978F] p-6 text-white shadow-2xl">
-            <img src="/src/assets/stress.png" alt="" width={70} />
+            <img src={stress} alt="" width={70} />
             <p className="text-base font-medium">Bullying Menyebabkan ketakutan dan stres psikolog</p>
           </div>
           <div className="grid justify-items-center md:w-60 text-center gap-4 bg-[#18978F] p-6 text-white shadow-2xl">
-            <img src="/src/assets/hate.png" alt="" width={70} />
+            <img src={hate} alt="" width={70} />
             <p className="text-base font-medium">
               Bullying menyebabkan kebencian dan melestarikan budaya kekerasan
             </p>
           </div>
           <div className="grid justify-items-center md:w-60 text-center gap-4 bg-[#18978F] p-6 text-white shadow-2xl">
-            <img src="/src/assets/danger.png" alt="" width={70} />
+            <img src={danger} alt="" width={70} />
             <p className="text-base font-medium">Bullying dapat mengancam kehidupan seseorang</p>
           </div>
         </div>
