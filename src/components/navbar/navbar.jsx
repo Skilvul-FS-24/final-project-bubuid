@@ -1,25 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
+import axios from "axios";
+import { data } from "autoprefixer";
 
 function Navbar() {
   const [isClick, setIsClick] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState({});
+  const token = localStorage.getItem("token");
+  const id = localStorage.getItem("id_user");
+  useEffect(() => {
+    getDataUser();
+  }, []);
+
+  const getDataUser = async () => {
+    try {
+      const { data } = await axios.get(`https://odd-lime-crocodile-kit.cyclic.app/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(data);
+      setIsLogin(!!data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      setIsLogin(false);
+    }
+  };
 
   const handleNavbar = () => {
     setIsClick(!isClick);
   };
 
-  // const handleLogin = () =>{
-  //   setIsLogin(true)
-  // }
+  const handleLogout = () => {
+    const isConfirmed = window.confirm("Apakah Anda yakin ingin logout?");
+
+    if (isConfirmed) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("id_user");
+      window.location.href = "/";
+    }
+  };
   return (
     <>
       <div className="p-4 flex bg-[#54BAB9] justify-between lg:justify-around text-white items-center font-poppins">
         <div>
-          <img
-            src="https://i.postimg.cc/85KGjjfY/Black-White-Minimalist-SImple-Monogram-Typography-Logo-1.png"
-            alt="bubu.id"
-            width={150}
-          />
+          <img src="/src/assets/navbar.png" alt="bubu.id" width={150} />
         </div>
         <div
           className={`${
@@ -30,35 +56,55 @@ function Navbar() {
         >
           <ul className="lg:flex gap-5 p-2 tracking-wider">
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">HOME</a>
+              <Link to="/">HOME</Link>
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">ABOUT BULLYING</a>
+              {isLogin ? (
+                <Link to="/aboutbullying">ABOUT BULLYING</Link>
+              ) : (
+                <Link to="/login">ABOUT BULLYING</Link>
+              )}
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">KONSELING</a>
+              {isLogin ? (
+                <Link to="/konseling">KONSELING</Link>
+              ) : (
+                <Link to="/login">KONSELING</Link>
+              )}
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">ARTIKEL</a>
+              {isLogin ? (
+                <Link to="/artikel">ARTIKEL</Link>
+              ) : (
+                <Link to="/login">ARTIKEL</Link>
+              )}
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">FORUM</a>
+              <Link to="/">FORUM</Link>
             </li>
             <li className="hover:bg-white px-2 py-1 hover:text-black hover:rounded-xl text-xs">
-              <a href="">ABOUT US</a>
+              <Link to="/aboutus">ABOUT US</Link>
             </li>
             <div className="inline-flex lg:flex gap-3 mt-2 text-black lg:ml-10 lg:mt-0 text-sm w-fit">
-              <button
-                className={`${isLogin ? "hidden" : "bg-white px-2 rounded-lg"}`}
-                // onClick={handleLogin}
-              >
-                Login
-              </button>
-              <button
-                className={`${isLogin ? "hidden" : "bg-white px-2 rounded-lg"}`}
-              >
-                Daftar
-              </button>
+              <Link to="/login">
+                <button
+                  className={`${
+                    isLogin ? "hidden" : "bg-white px-2 rounded-lg"
+                  }`}
+                  // onClick={handleLogin}
+                >
+                  Login
+                </button>
+              </Link>
+              <Link to="/register">
+                <button
+                  className={`${
+                    isLogin ? "hidden" : "bg-white px-2 rounded-lg"
+                  }`}
+                >
+                  Daftar
+                </button>
+              </Link>
               <div
                 className={`${isLogin ? "flex gap-2 text-white" : "hidden"}`}
               >
@@ -83,6 +129,7 @@ function Navbar() {
                   strokeWidth={1.5}
                   stroke="currentColor"
                   className="w-6 h-6"
+                  onClick={handleLogout}
                 >
                   <path
                     strokeLinecap="round"
