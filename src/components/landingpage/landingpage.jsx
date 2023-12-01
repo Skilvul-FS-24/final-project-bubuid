@@ -2,16 +2,19 @@ import React from "react";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
 import { Link } from "react-router-dom";
+import logoBubu from "../../assets/logobubu.png";
+import logoKompak from "../../assets/kompak.png"; 
+import animasi from "../../assets/animasi.png"
 
 function LandingPage() {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="bg-[#54BAB9] min-h-screen py-16">
         <div className="hero-content flex-col justify-evenly md:flex-row-reverse">
           <div>
             <img
-              src="/src/assets/logobubu.png"
+              src={logoBubu}
               className="max-w-xs"
               width={250}
             />
@@ -31,7 +34,7 @@ function LandingPage() {
       <div className="p-4 flex flex-col md:flex-row justify-around items-center">
         <div className="mb-4 md:mb-0">
           <img
-            src="/src/assets/kompak.png"
+            src={logoKompak}
             alt=""
             className="max-w-sm"
             width={300}
@@ -49,9 +52,11 @@ function LandingPage() {
                 pendidikan
               </p>
               <div className="text-center mt-2">
-                <Link to="/"><button className="bg-white px-4 py-2 rounded-md">
-                  Learn More
-                </button></Link>
+                <Link to="/">
+                  <button className="bg-white px-4 py-2 rounded-md">
+                    Learn More
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -60,7 +65,7 @@ function LandingPage() {
       <div className="hero min-h-max bg-[#18978F] text-white p-4 md:text-left">
         <div className="hero-content flex-col justify-around lg:flex-row-reverse">
           <img
-            src="/src/assets/animasi.png"
+            src={animasi}
             className="max-w-sm rounded-lg shadow-2xl"
             width={200}
           />
@@ -72,9 +77,11 @@ function LandingPage() {
               menjadi suatu kebiasaan dan melibatkan ketidakseimbangan kekuasaan
               sosial atau fisik.
             </p>
-            <Link to="/aboutbullying"><button className="bg-white px-4 py-1 rounded-md text-black">
-              Learn More
-            </button></Link>
+            <Link to="/aboutbullying">
+              <button className="bg-white px-4 py-1 rounded-md text-black">
+                Learn More
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -100,9 +107,11 @@ function LandingPage() {
                       kenyamananmu bercerita
                     </p>
                     <div className="card-actions justify-center">
-                      <Link to="/konseling"><button className="bg-white px-4 py-1 rounded-md text-black">
-                        Learn More
-                      </button></Link>
+                      <Link to="/konseling">
+                        <button className="bg-white px-4 py-1 rounded-md text-black">
+                          Learn More
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -120,9 +129,11 @@ function LandingPage() {
                       akibatnya
                     </p>
                     <div className="card-actions justify-center">
-                      <Link to="/artikel"><button className="bg-white px-4 py-1 rounded-md text-black">
-                        Learn More
-                      </button></Link>
+                      <Link to="/artikel">
+                        <button className="bg-white px-4 py-1 rounded-md text-black">
+                          Learn More
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -131,9 +142,7 @@ function LandingPage() {
                 <div className="card shadow-xl bg-[#18978F]">
                   <div className="card-body">
                     <h2 className="text-sm text-left">Forum</h2>
-                    <h3 className="font-semibold text-left">
-                      Forum Diskusi
-                    </h3>
+                    <h3 className="font-semibold text-left">Forum Diskusi</h3>
                     <p className="text-left font-poppins text-sm mt-4">
                       Forum diskusi untuk user yang menghadapi masalah bullying
                       dapat berbagi pengalaman mereka & mendapat dukungan dari
@@ -194,7 +203,7 @@ function LandingPage() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

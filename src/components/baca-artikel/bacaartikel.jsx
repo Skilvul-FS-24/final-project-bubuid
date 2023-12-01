@@ -4,6 +4,9 @@ import Footer from "../footer/footer";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getArtikelById } from "../../redux/actions/artikel.action";
+import logoFb from "../../assets/Logofb.png"
+import logoGoogle from "../../assets/Logogugel.png"
+import logoIg from "../../assets/Logoig.png"
 
 function Bacaartikel() {
   const dispatch = useDispatch();
@@ -56,13 +59,13 @@ function Bacaartikel() {
               </div>
               <div className="flex gap-4">
                 <a>
-                  <img src="/src/assets/Logofb.png" width={20} alt="" />
+                  <img src={logoFb} width={20} alt="" />
                 </a>
                 <a>
-                  <img src="/src/assets/Logogugel.png" width={20} alt="" />
+                  <img src={logoGoogle} width={20} alt="" />
                 </a>
                 <a>
-                  <img src="/src/assets/Logoig.png" width={20} alt="" />
+                  <img src={logoIg} width={20} alt="" />
                 </a>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logoLogin from "../../assets/login.jpeg"
 
 function Login() {
   localStorage.removeItem("token");
@@ -120,7 +121,7 @@ function Login() {
             </div>
           </form>
           <div className="w-60">
-            <img src="/src/assets/login.jpeg" alt="" />
+            <img src={logoLogin}alt="" />
           </div>
         </div>
       </div>
