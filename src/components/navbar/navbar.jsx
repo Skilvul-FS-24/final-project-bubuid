@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Navigate, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import { data } from "autoprefixer";
+import navbarLogo from "../../assets/navbar.png"
 
 function Navbar() {
   const [isClick, setIsClick] = useState(false);
@@ -45,7 +46,7 @@ function Navbar() {
     <>
       <div className="p-4 flex bg-[#54BAB9] justify-between lg:justify-around text-white items-center font-poppins">
         <div>
-          <img src="/public/assets/navbar.png" alt="bubu.id" width={150} />
+          <img src={navbarLogo} alt="bubu.id" width={150} />
         </div>
         <div
           className={`${
