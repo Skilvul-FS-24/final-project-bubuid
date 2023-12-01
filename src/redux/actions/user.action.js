@@ -5,7 +5,7 @@ export function getUserIdKonseling(token, userId) {
     dispatch(startFeathing());
 
     try {
-      const {data} = await axios.get(`http://localhost:3000/users/${userId}/konseling`, {
+      const {data} = await axios.get(`https://odd-lime-crocodile-kit.cyclic.app/users/${userId}/konseling`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -31,7 +31,7 @@ function Regis() {
   }
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/auth/register",
+        "https://odd-lime-crocodile-kit.cyclic.app/auth/register",
         user
       );
       setRegisAlert(true);
