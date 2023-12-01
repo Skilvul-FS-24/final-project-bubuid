@@ -8,7 +8,7 @@ import { submitKonselingForm } from "../../redux/actions/konseling.action";
 
 function DetailPsikolog() {
   const dispatch = useDispatch();
-  const { isLoading, psikologs } = useSelector((state) => state.psikolog);
+  const { isLoading, psikologsById } = useSelector((state) => state.psikolog);
   const token = localStorage.getItem("token");
   const idUser = localStorage.getItem("id_user");
   const { id } = useParams();
@@ -39,9 +39,7 @@ function DetailPsikolog() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Dispatch action to send form data to Redux
     dispatch(submitKonselingForm(token, id, formData));
-    window.location.href = "/konseling";
   };
 
   return (
@@ -59,7 +57,7 @@ function DetailPsikolog() {
       <div className="flex flex-col md:flex-row justify-center p-10 gap-9">
         <div className="md:basis-1/5 font-poppins md:grid  md:place-content-between">
           <img
-            src={psikologs.gambar}
+            src={psikologsById.gambar}
             alt=""
             className="w-full mb-5 rounded-md"
           />
@@ -180,7 +178,7 @@ function DetailPsikolog() {
                     value={formData.jadwal}
                   />
                   <label className="label">
-                    <span className="label-text-alt">{psikologs.jadwal}</span>
+                    <span className="label-text-alt">{psikologsById.jadwal}</span>
                   </label>
                 </div>
 
@@ -212,21 +210,21 @@ function DetailPsikolog() {
           </dialog>
         </div>
         <div className="md:basis-1/2 p-10 bg-[#54BAB9] rounded-xl font-poppins">
-          <h1 className="text-xl font-bold">{psikologs.nama_psikolog}</h1>
+          <h1 className="text-xl font-bold">{psikologsById.nama_psikolog}</h1>
           <div className="mt-2">
             <h1 className="text-white font-semibold mb-2">Biography</h1>
-            <p className="text-sm">{psikologs.biography}</p>
+            <p className="text-sm">{psikologsById.biography}</p>
           </div>
           <div className="mt-2">
             <h1 className="text-white font-semibold mb-2">Pendidikan</h1>
             <ul className="list-disc text-sm">
-              <li>{psikologs.pendidikan}</li>
+              <li>{psikologsById.pendidikan}</li>
             </ul>
           </div>
           <div className="mt-2">
             <h1 className="text-white font-semibold mb-2">Jadwal Konseling</h1>
             <ul className="list-disc text-sm">
-              <li>{psikologs.jadwal}</li>
+              <li>{psikologsById.jadwal}</li>
             </ul>
           </div>
         </div>

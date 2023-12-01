@@ -15,7 +15,7 @@ function Navbar() {
 
   const getDataUser = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/users/${id}`, {
+      const { data } = await axios.get(`https://odd-lime-crocodile-kit.cyclic.app/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

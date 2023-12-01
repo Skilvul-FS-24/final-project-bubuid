@@ -5,7 +5,7 @@ export function getPsikologs(token) {
     dispatch(startFeathing());
 
     try {
-      const {data} = await axios.get("http://localhost:3000/psikolog", {
+      const {data} = await axios.get("https://odd-lime-crocodile-kit.cyclic.app/psikolog", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -22,12 +22,12 @@ export function getPsikologById(token, id) {
     dispatch(startFeathing());
 
     try {
-      const {data} = await axios.get(`http://localhost:3000/psikolog/${id}`, {
+      const {data} = await axios.get(`https://odd-lime-crocodile-kit.cyclic.app/psikolog/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      dispatch(successGetPsikologs(data.data));
+      dispatch(successGetPsikologsById(data.data));
     } catch (error) {
       dispatch(errorFetching(error.message));
     }
@@ -44,6 +44,13 @@ function startFeathing() {
 function successGetPsikologs(data) {
   return {
     type: "SUCCESS_GET_DATA",
+    payload: data,
+  };
+}
+
+function successGetPsikologsById(data) {
+  return {
+    type: "SUCCESS_GET_PSIKOLOG_BY_ID",
     payload: data,
   };
 }

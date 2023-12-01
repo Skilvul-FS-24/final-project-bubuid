@@ -7,7 +7,7 @@ import { getArtikelById } from "../../redux/actions/artikel.action";
 
 function Bacaartikel() {
   const dispatch = useDispatch();
-  const { isLoading, artikels } = useSelector((state) => state.artikel);
+  const { isLoading, artikelbyId } = useSelector((state) => state.artikel);
   const token = localStorage.getItem("token");
 
   const { id } = useParams();
@@ -34,25 +34,25 @@ function Bacaartikel() {
       <div className="md:p-10">
         <div className="p-10 bg-slate-100 font-poppins">
           <h1 className="font-bold text-center text-2xl">
-            {artikels.judul}
+            {artikelbyId.judul}
           </h1>
           <div className="grid grid-cols-1 justify-center items-center">
             <img
-              src={artikels.gambar}
+              src={artikelbyId.gambar}
               width={300}
               className="mx-auto mt-5 mb-5 rounded-md"
               alt=""
             />
             <p className="indent-8 font-sm tracking-normal">
-              {artikels.isi}
+              {artikelbyId.isi}
             </p>
           </div>
           <div className="justify-between p-2">
             <div className="flex gap-4 items-center left-content">
-              <img src={artikels.profil_penulis} width={30} alt="" />
+              <img src={artikelbyId.profil_penulis} width={30} alt="" />
               <div className="">
-                <p>{artikels.penulis}</p>
-                <p>{artikels.pekerjaan}</p>
+                <p>{artikelbyId.penulis}</p>
+                <p>{artikelbyId.pekerjaan}</p>
               </div>
               <div className="flex gap-4">
                 <a>

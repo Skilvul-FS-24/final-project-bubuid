@@ -10,8 +10,10 @@ function Artikel() {
   const { isLoading, artikels } = useSelector((state) => state.artikel);
   const token = localStorage.getItem("token");
 
+
   useEffect(() => {
     dispatch(getArtikels(token));
+    console.log(artikels);
   }, []);
 
   return (

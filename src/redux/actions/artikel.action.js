@@ -5,7 +5,7 @@ export function getArtikels(token) {
     dispatch(startFeathing());
 
     try {
-      const {data} = await axios.get("http://localhost:3000/artikel", {
+      const {data} = await axios.get("https://odd-lime-crocodile-kit.cyclic.app/artikel", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -30,17 +30,24 @@ function successGetArtikels(data) {
   };
 }
 
+function successGetArtikelsById(data) {
+  return {
+    type: "SUCCESS_GET_DATA_BY_ID",
+    payload: data,
+  };
+}
+
 export function getArtikelById(token, id) {
   return async function (dispatch) {
     dispatch(startFeathing());
 
     try {
-      const {data} = await axios.get(`http://localhost:3000/artikel/${id}`, {
+      const {data} = await axios.get(`https://odd-lime-crocodile-kit.cyclic.app/artikel/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      dispatch(successGetArtikels(data.data));
+      dispatch(successGetArtikelsById(data.data));
     } catch (error) {
       dispatch(errorFetching(error.message));
     }

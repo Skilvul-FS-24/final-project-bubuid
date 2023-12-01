@@ -5,18 +5,22 @@ export function submitKonselingForm(token, id, formData) {
     dispatch(startFeathing());
 
     try {
-      const {data} = await axios.post("http://localhost:3000/konseling", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await axios.post(
+        "https://odd-lime-crocodile-kit.cyclic.app/konseling",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       dispatch(successGetKonseling(data.data));
+      window.location.href = "/konseling";
     } catch (error) {
       dispatch(errorFetching(error.message));
     }
   };
 }
-
 
 function startFeathing() {
   return {
