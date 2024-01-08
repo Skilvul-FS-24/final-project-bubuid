@@ -23,7 +23,7 @@ function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://odd-lime-crocodile-kit.cyclic.app/auth/login",
+        "https://calm-ruby-chicken-tam.cyclic.app/auth/login",
         user
       );
       const data = response.data;

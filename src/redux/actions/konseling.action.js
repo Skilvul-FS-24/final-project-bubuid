@@ -6,7 +6,7 @@ export function submitKonselingForm(token, id, formData) {
 
     try {
       const { data } = await axios.post(
-        "https://odd-lime-crocodile-kit.cyclic.app/konseling",
+        "https://calm-ruby-chicken-tam.cyclic.app/konseling",
         formData,
         {
           headers: {

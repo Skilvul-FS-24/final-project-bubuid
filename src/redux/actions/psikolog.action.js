@@ -5,7 +5,7 @@ export function getPsikologs(token) {
     dispatch(startFeathing());
 
     try {
-      const {data} = await axios.get("https://odd-lime-crocodile-kit.cyclic.app/psikolog", {
+      const {data} = await axios.get("https://calm-ruby-chicken-tam.cyclic.app/psikolog", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -22,7 +22,7 @@ export function getPsikologById(token, id) {
     dispatch(startFeathing());
 
     try {
-      const {data} = await axios.get(`https://odd-lime-crocodile-kit.cyclic.app/psikolog/${id}`, {
+      const {data} = await axios.get(`https://calm-ruby-chicken-tam.cyclic.app/psikolog/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
