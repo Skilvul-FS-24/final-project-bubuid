@@ -16,7 +16,7 @@ function Navbar() {
 
   const getDataUser = async () => {
     try {
-      const { data } = await axios.get(`https://odd-lime-crocodile-kit.cyclic.app/users/${id}`, {
+      const { data } = await axios.get(`https://calm-ruby-chicken-tam.cyclic.app/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

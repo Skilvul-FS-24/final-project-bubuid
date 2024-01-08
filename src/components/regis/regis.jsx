@@ -32,7 +32,7 @@ function Regis() {
   }
     try {
       const { data } = await axios.post(
-        "https://odd-lime-crocodile-kit.cyclic.app/auth/register",
+        "https://calm-ruby-chicken-tam.cyclic.app/auth/register",
         user
       );
       setRegisAlert(true);
